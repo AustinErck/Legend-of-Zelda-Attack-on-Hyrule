@@ -13,5 +13,8 @@ public abstract class Entity extends GameObject {
 	public abstract int getTotalHealth();
 	
 	public abstract Weapon getWeapon();
-
+	
+	public abstract void damage(int damage);
+	
+	public abstract void heal(int heal);
 }
