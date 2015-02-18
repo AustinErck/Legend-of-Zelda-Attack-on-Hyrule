@@ -11,7 +11,4 @@ public class GameUtil {
 	public static void println(String text){
 		System.out.println(text);
 	}
-	
-    
-    //TODO Clear Console
 }

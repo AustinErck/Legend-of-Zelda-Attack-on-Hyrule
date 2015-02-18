@@ -10,7 +10,7 @@ public class Game {
 	
 	public Player player;
 	private boolean quitGame = false;
-	private Location[][] map = new Location[2][2];
+	private Location[][] map = new Location[3][3];
 	private Location[] testLoc = {new Location("Wall", true),new Location("Wall", true),new Location("Wall", true),
 								  new Location("Wall", true),new Location("Field", false),new Location("Wall", true),
 	  							  new Location("Wall", true),new Location("Field", false),new Location("Wall", true)};
@@ -31,6 +31,9 @@ public class Game {
 				case "north":
 					if(player.getYPos() >= 0 && player.getXPos() >= 0 && !map[player.getYPos()+1][player.getXPos()].isWall()){
 						player.move(0, map.length);
+						GameUtil.println("You walk north");
+					}else{
+						GameUtil.print("You can't walk north, there is a wall");
 					}
 					break;
 				case "south":
@@ -49,6 +52,7 @@ public class Game {
 					}
 					break;
 				case "look":
+					GameUtil.println("You look around");
 					break;
 			}
 		}
