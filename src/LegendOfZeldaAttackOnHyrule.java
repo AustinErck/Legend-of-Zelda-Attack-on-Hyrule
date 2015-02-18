@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import loz.mechanics.Game;
 import loz.mechanics.Profile;
 import loz.mechanics.GameUtil;
 
@@ -22,17 +23,14 @@ public class LegendOfZeldaAttackOnHyrule {
 				String command = scan.next();
 				switch(command.toLowerCase()){
 					case "1":
-						GameUtil.print("Please enter your character's name:");
 						loadSave(profiles[0], 1);
 						profiles = null;
 						break;
 					case "2":
-						GameUtil.print("Please enter your character's name:");
 						loadSave(profiles[1], 2);
 						profiles = null;
 						break;
 					case "3":
-						GameUtil.print("Please enter your character's name:");
 						loadSave(profiles[2], 3);
 						profiles = null;
 						break;
@@ -93,9 +91,9 @@ public class LegendOfZeldaAttackOnHyrule {
 	 */
 	private static void loadSave(Profile profile, int profileNumber){
 		if(!profile.isNewProfile()){
-			//TODO Pass game profile
-			GameUtil.print("Loaded File!");
+			new Game(profile.player);
 		}else{
+			GameUtil.print("Please enter your character's name:");
 			newSave(scan.next(), profileNumber);
 		}
 	}

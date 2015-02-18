@@ -5,6 +5,8 @@ import loz.mechanics.GameObject;
 
 public abstract class Entity extends GameObject {
 
+	public abstract void update();
+	
 	@Override
 	public abstract String getName();
 	
@@ -17,4 +19,5 @@ public abstract class Entity extends GameObject {
 	public abstract void damage(int damage);
 	
 	public abstract void heal(int heal);
+	
 }

@@ -13,7 +13,7 @@ public class Weapon extends GameObject{
 		this.damage = damage;
 		this.critChance = critChance;
 	}
-
+	
 	@Override
 	public String getName() {
 		return name;

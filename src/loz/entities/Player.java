@@ -9,6 +9,8 @@ public class Player extends Entity{
 	private int totalHealth;
 	private int arrows;
 	private int rupees;
+	private int xPos;
+	private int yPos;
 	private Weapon weapon;
 	private boolean isAlive;
 	private boolean[] elements = new boolean[3];
@@ -24,36 +26,74 @@ public class Player extends Entity{
 		this.elements[0] = forestElement;
 		this.elements[1] = waterElement;
 		this.elements[2] = fireElement;
+		this.xPos = 1;
+		this.yPos = 1;
 	}
 	
+	/**
+	 * Updates applied to player after command
+	 */
 	@Override
+	public void update() {
+		// TODO Add update info
+		if(!isAlive){
+			
+		}
+	} 
+	
+	public void move(int direction, int posMax){
+		switch(direction){
+			case 0:
+				if(yPos > 0){
+					yPos--;
+				}
+				break;
+			case 1:
+				if(yPos < posMax){
+					yPos++;
+				}
+				break;
+			case 2:
+				if(xPos > 0){
+					xPos--;
+				}
+				break;
+			case 3:
+				if(xPos < posMax){
+					xPos++;
+				}
+				break;
+		}
+	}
+	
 	/**
 	 * Returns the players name
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
 
-	@Override
 	/**
 	 * Returns the players current health
 	 */
+	@Override
 	public int getHealth() {
 		return health;
 	}
 
-	@Override
 	/**
 	 * Returns the total health of the player as a integer 
 	 */
+	@Override
 	public int getTotalHealth() {
 		return totalHealth;
 	}
 
-	@Override
 	/**
 	 * Returns the players current weapon, used in battles for the game to calculate damage
 	 */
+	@Override
 	public Weapon getWeapon() {
 		return weapon;
 	}
@@ -96,6 +136,22 @@ public class Player extends Entity{
 	 */
 	public int getArrows(){
 		return arrows;
+	}
+	
+	/**
+	 * Returns the x position the player is at
+	 * @return x position 
+	 */
+	public int getXPos(){
+		return xPos;
+	}
+	
+	/**
+	 * Returns the y position the player is ay
+	 * @return y position 
+	 */
+	public int getYPos(){
+		return yPos;
 	}
 	
 	/**
