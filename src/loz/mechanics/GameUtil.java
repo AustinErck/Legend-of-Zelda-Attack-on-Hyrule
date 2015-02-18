@@ -12,4 +12,6 @@ public class GameUtil {
 		System.out.println(text);
 	}
 	
+    
+    //TODO Clear Console
 }
