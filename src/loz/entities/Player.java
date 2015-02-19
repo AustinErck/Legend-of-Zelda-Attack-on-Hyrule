@@ -1,38 +1,48 @@
 package loz.entities;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 import loz.items.Weapon;
 
 public class Player extends Entity{
 
 	private String name;
-	private int health;
-	private int totalHealth;
-	private int arrows;
-	private int rupees;
-	private int xPos;
-	private int yPos;
+	private int health, totalHealth, arrows, rupees, xPos, yPos, saveID;
 	private Weapon weapon;
-	private boolean isAlive;
+	private boolean isAlive, newSave;
 	private boolean[] elements = new boolean[3];
 	
-	public Player(String name, int health, int totalHealth, int arrows, int rupees, Weapon weapon, boolean forestElement, boolean waterElement, boolean fireElement){
-		this.name = name;
-		this.health = health;
-		this.totalHealth = totalHealth;
-		this.arrows = arrows;
-		this.rupees = rupees;
-		this.weapon = weapon;
-		isAlive = true;
-		this.elements[0] = forestElement;
-		this.elements[1] = waterElement;
-		this.elements[2] = fireElement;
-		this.xPos = 1;
-		this.yPos = 1;
+	/**
+	 * Creates a player object
+	 * @param fileURL URL of save file
+	 */
+	public Player(String fileURL){
+		try{
+			BufferedReader file = new BufferedReader(new FileReader(fileURL));
+			file.readLine();
+			
+			name = file.readLine();
+			health = Integer.parseInt(file.readLine());
+			totalHealth = Integer.parseInt(file.readLine());
+			arrows = Integer.parseInt(file.readLine());
+			rupees = Integer.parseInt(file.readLine());
+			xPos = 0;
+			yPos = 0;
+			saveID = Integer.parseInt(file.readLine());
+			weapon = new Weapon(file.readLine(), file.readLine(), Integer.parseInt(file.readLine()), Double.parseDouble(file.readLine()));
+			elements[0] = Boolean.parseBoolean(file.readLine());
+			elements[1] = Boolean.parseBoolean(file.readLine());
+			elements[2] = Boolean.parseBoolean(file.readLine());
+			
+			file.close();
+			}catch(Exception e){}
 	}
 	
-	/**
-	 * Updates applied to player after command
-	 */
+	public Player(){
+		newSave = true;
+	}
+	
 	@Override
 	public void update() {
 		// TODO Add update info
@@ -40,63 +50,6 @@ public class Player extends Entity{
 			
 		}
 	} 
-	
-	public void move(int direction, int posMax){
-		switch(direction){
-			case 0:
-				if(yPos > 0){
-					yPos--;
-				}
-				break;
-			case 1:
-				if(yPos < posMax){
-					yPos++;
-				}
-				break;
-			case 2:
-				if(xPos > 0){
-					xPos--;
-				}
-				break;
-			case 3:
-				if(xPos < posMax){
-					xPos++;
-				}
-				break;
-		}
-	}
-	
-	/**
-	 * Returns the players name
-	 */
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Returns the players current health
-	 */
-	@Override
-	public int getHealth() {
-		return health;
-	}
-
-	/**
-	 * Returns the total health of the player as a integer 
-	 */
-	@Override
-	public int getTotalHealth() {
-		return totalHealth;
-	}
-
-	/**
-	 * Returns the players current weapon, used in battles for the game to calculate damage
-	 */
-	@Override
-	public Weapon getWeapon() {
-		return weapon;
-	}
 	
 	/**
 	 * Damages the player
@@ -122,12 +75,19 @@ public class Player extends Entity{
 		}
 	}
 	
-	/**
-	 * Returns the number of rupees the player has
-	 * @return The number of rupees 
-	 */
-	public int getRupees(){
-		return rupees;
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public int getHealth() {
+		return health;
+	}
+
+	@Override
+	public int getTotalHealth() {
+		return totalHealth;
 	}
 	
 	/**
@@ -136,6 +96,14 @@ public class Player extends Entity{
 	 */
 	public int getArrows(){
 		return arrows;
+	}
+	
+	/**
+	 * Returns the number of rupees the player has
+	 * @return The number of rupees 
+	 */
+	public int getRupees(){
+		return rupees;
 	}
 	
 	/**
@@ -155,19 +123,32 @@ public class Player extends Entity{
 	}
 	
 	/**
-	 * Outputs the players total health as a string of "<"s and "3"s
-	 * @return A string of hearts representing the players total health
+	 * Returns save ID of the current player
+	 * @return Player save ID
 	 */
-	public String totalHealthToString(){
-		String output = "";
-		for(int j = 0; j < getTotalHealth(); j++){
-			if( j % 2 == 0){
-				output += "<";
-			}else{
-				output += "3 ";
-			}
-		}
-		return output;
+	public int getSaveID(){
+		return saveID;
 	}
-
+	
+	@Override
+	public Weapon getWeapon() {
+		return weapon;
+	}
+	
+	/**
+	 * Gets the array of the elements and if the player has earned them
+	 * @return Array elements in boolean form
+	 */
+	public boolean[] getElements(){
+		return elements;
+	}
+	
+	/**
+	 * Returns true if the player is new, or did not have aprevious save
+	 * @return 
+	 */
+	public boolean getIsNewSave(){
+		return newSave;
+	}
+	
 }
