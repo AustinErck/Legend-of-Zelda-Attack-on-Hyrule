@@ -80,7 +80,7 @@ public class LegendOfZeldaAttackOnHyrule {
 	 * @param profileNumber used if save doesn't exist to create a save with the proper number
 	 */
 	private static void loadSave(Player player, int saveID){
-		if(!profile[saveID].getIsNewSave()){
+		if(profile[saveID].isNewSave()){
 			new Game(player);
 		}else{
 			GameUtil.print("Please enter your characters name: ");

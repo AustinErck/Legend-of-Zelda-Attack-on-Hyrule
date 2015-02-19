@@ -10,7 +10,7 @@ public class Player extends Entity{
 	private String name;
 	private int health, totalHealth, arrows, rupees, xPos, yPos, saveID;
 	private Weapon weapon;
-	private boolean isAlive, newSave;
+	private boolean isAlive, newSave = false;
 	private boolean[] elements = new boolean[3];
 	
 	/**
@@ -106,6 +106,10 @@ public class Player extends Entity{
 		return rupees;
 	}
 	
+	public void addRupees(int addedRupees){
+		rupees += addedRupees;
+	}
+	
 	/**
 	 * Returns the x position the player is at
 	 * @return x position 
@@ -114,12 +118,22 @@ public class Player extends Entity{
 		return xPos;
 	}
 	
+	
+	public void setXPos(int pos){
+		xPos = pos;
+	}
+	
 	/**
 	 * Returns the y position the player is ay
 	 * @return y position 
 	 */
 	public int getYPos(){
 		return yPos;
+	}
+	
+	
+	public void setYPos(int pos){
+		yPos = pos;
 	}
 	
 	/**
@@ -147,7 +161,7 @@ public class Player extends Entity{
 	 * Returns true if the player is new, or did not have aprevious save
 	 * @return 
 	 */
-	public boolean getIsNewSave(){
+	public boolean isNewSave(){
 		return newSave;
 	}
 	
