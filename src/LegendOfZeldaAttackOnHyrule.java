@@ -39,9 +39,10 @@ public class LegendOfZeldaAttackOnHyrule {
 					quitGame = true;
 					break;
 				default:
-					GameUtil.println("Please enter a valid command\n");
+					GameUtil.println(" Please enter a valid command\n");
 					break;
 			}
+			profile = null;
 		}
 		System.exit(0);
 	}

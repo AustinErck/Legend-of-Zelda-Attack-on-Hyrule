@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 import loz.items.Weapon;
-import loz.locations.Location;
-import loz.mechanics.GameUtil;
 
 public class Player extends Entity{
 
@@ -74,59 +72,6 @@ public class Player extends Entity{
 			health += heal;
 		}else{
 			health = totalHealth;
-		}
-	}
-	
-	public void walk(int direction, Location[][] map){
-		switch(direction){
-			case 0:
-				if(getYPos() > 0 && !map[getYPos() - 1][getXPos()].isAWall()){
-					GameUtil.println("You walk north.");
-					yPos--;
-				}else{
-					if(yPos != 0){
-						GameUtil.println("You can't, there is a " + map[getYPos() - 1][getXPos()].getName().toLowerCase() + " there.");
-					}else{
-						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
-					}
-				}
-				break;
-			case 1:
-				if(getXPos() < map.length-1 && !map[getYPos()][getXPos() + 1].isAWall()){
-					GameUtil.println("You walk east.");
-					xPos++;
-				}else{
-					if(!(xPos == map.length-1)){
-						GameUtil.println("You can't, there is a " + map[getYPos()][getXPos() + 1].getName().toLowerCase() + " there.");
-					}else{
-						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
-					}
-				}
-				break;
-			case 2:
-				if(getYPos() < map.length-1 && !map[getYPos() + 1][getXPos()].isAWall()){
-					GameUtil.println("You walk south.");
-					yPos++;
-				}else{
-					if(!(yPos == map.length-1)){
-						GameUtil.println("You can't, there is a " + map[getYPos() + 1][getXPos()].getName().toLowerCase() + " there.");
-					}else{
-						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
-					}
-				}
-				break;
-			case 3:
-				if(getXPos() > 0 && !map[getYPos()][getXPos() - 1].isAWall()){
-					GameUtil.println("You walk west.");
-					xPos--;
-				}else{
-					if(xPos != 0){
-						GameUtil.println("You can't, there is a " + map[getYPos()][getXPos() - 1].getName().toLowerCase() + " there.");
-					}else{
-						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
-					}
-				}
-				break;
 		}
 	}
 	
