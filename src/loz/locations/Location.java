@@ -1,12 +1,23 @@
 package loz.locations;
 
-public class Location {
+import loz.mechanics.GameObject;
 
-	String name;
+public class Location extends GameObject{
+
+	private String name;
 	boolean isAWall;
 	
 	public Location(String name, boolean isAWall){
 		this.name = name;
 		this.isAWall = isAWall;
+	}
+	
+	public boolean isAWall(){
+		return isAWall;
+	}
+
+	@Override
+	public String getName() {
+		return name;
 	}
 }
