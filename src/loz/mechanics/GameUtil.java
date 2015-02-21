@@ -3,7 +3,6 @@ package loz.mechanics;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Scanner;
 
 import loz.entities.Player;
 
