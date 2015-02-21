@@ -4,20 +4,18 @@ import loz.mechanics.GameObject;
 
 public class Location extends GameObject{
 
-	private String name;
-	boolean isAWall;
+	private EnumLocations locationInfo;
 	
-	public Location(String name, boolean isAWall){
-		this.name = name;
-		this.isAWall = isAWall;
+	public Location(EnumLocations locationInfo){
+		this.locationInfo = locationInfo;
 	}
 	
 	public boolean isAWall(){
-		return isAWall;
+		return locationInfo.isAWall();
 	}
 
 	@Override
 	public String getName() {
-		return name;
+		return locationInfo.getName();
 	}
 }

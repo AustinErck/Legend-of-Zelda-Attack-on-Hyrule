@@ -3,6 +3,7 @@ package loz.mechanics;
 import java.util.Scanner;
 
 import loz.entities.Player;
+import loz.locations.EnumLocations;
 import loz.locations.Location;
 
 public class Game {
@@ -37,8 +38,15 @@ public class Game {
 							break;
 					}
 					break;
-				case "search for items":
-					//TODO: Random items dependent on location
+				case "search for":
+					switch(scan.next().toLowerCase()){
+						case "items":
+							
+							break;
+						case "enemy":
+							//TODO Allow user to fight enemies
+							break;
+					}
 					break;
 				case "save":
 					GameUtil.saveGame(player);
@@ -71,9 +79,9 @@ public class Game {
 		for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 3; j++){
 				if(i == 1 && j == 1 || i == 2 && j == 1 || i == 0 && j == 1){
-					map[i][j] = new Location("Field", false);
+					map[i][j] = new Location(EnumLocations.PATH_FIELD);
 				}else{
-					map[i][j] = new Location("Wall", true);
+					map[i][j] = new Location(EnumLocations.WALL_FIELD);
 				}
 			}
 		}
