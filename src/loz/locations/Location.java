@@ -6,7 +6,7 @@ import loz.mechanics.GameUtil;
 public class Location extends GameObject{
 
 	private EnumLocations locationInfo;
-	private int[] items;
+	private int[] items = new int[2];
 	
 	/**
 	 * Creates a new location in the game
@@ -14,7 +14,6 @@ public class Location extends GameObject{
 	 */
 	public Location(EnumLocations locationInfo){
 		this.locationInfo = locationInfo;
-		//items = {(int) (Math.random() * locationInfo.getItemRarity() * 10), (int) (Math.random() * locationInfo.getItemRarity() * 10), (int) (Math.random() * 1)};
 	}
 	
 	/**
@@ -22,6 +21,11 @@ public class Location extends GameObject{
 	 * @param location 
 	 */
 	public void generateItems(EnumLocations location){
+		GameUtil.println(items + "");
+		int[] genItems = {(int) (Math.random() * locationInfo.getItemRarity() * 10), (int) (Math.random() * locationInfo.getItemRarity() * 10), (int) (Math.random() * 1)};
+		for(int i = 0; i < genItems.length; i++){
+			items[i] = genItems[i];
+		}
 		GameUtil.println("You look on the ground around you and you find:");
 		if(items[0] != 0){
 			if(items[0] == 1){
