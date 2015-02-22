@@ -41,6 +41,9 @@ public class Player extends Entity{
 			}catch(Exception e){}
 	}
 	
+	/**
+	 * Creates a player object that is a new game and not a playable player
+	 */
 	public Player(){
 		newSave = true;
 	}
@@ -77,6 +80,11 @@ public class Player extends Entity{
 		}
 	}
 	
+	/**
+	 * Moves the player in the specified direction
+	 * @param direction Number representing the direction the player wants to go. Clockwise staring with North equaling 0
+	 * @param map Current map the player is on
+	 */
 	public void walk(int direction, Location[][] map){
 		switch(direction){
 			case 0:
@@ -128,6 +136,10 @@ public class Player extends Entity{
 				}
 				break;
 		}
+	}
+	
+	public void lookForItems(Location location){
+		location.generateItems(location.getEnumLocations());
 	}
 	
 	@Override

@@ -2,16 +2,16 @@ package loz.locations;
 
 public enum EnumLocations{
 	
-	PATH_FIELD("Field", "a wide open field", 0.4, 0.3, 0.3, 0.3),
-	PATH_FOREST("Forest Clearing", "a clearing in the forest ahead", 0.4, 0.3, 0.3, 0.3),
-	PATH_MOUNTAIN("Mountain", "a path covered in small rocks", 0.4, 0.3, 0.3, 0.3),
-	PATH_LAKE("Lake", "a beautiful, sparkling lake", 0.4, 0.3, 0.3, 0.3),
-	PATH_CASTLE("Castle", "a nicely paved path", 0.4, 0.3, 0.3, 0.3),
-	WALL_FIELD("Brick Wall", "a sturdy brick wall"),
-	WALL_FOREST("Forest Wall", "a dark, dense patch of trees. To close together to get through."),
-	WALL_MOUNTAIN("Mountain Wall", "a nicely paved path"),
-	WALL_LAKE("Castle", "a nicely paved path"),
-	WALL_CASTLE("Castle", "a nicely paved path");
+	PATH_FIELD("field", "a wide open field", 0.4, 0.3, 0.3, 0.3),
+	PATH_FOREST("forest clearing", "a clearing in the forest ahead", 0.4, 0.3, 0.3, 0.3),
+	PATH_MOUNTAIN("mountain", "a path covered in small rocks", 0.4, 0.3, 0.3, 0.3),
+	PATH_LAKE("lake", "a nice path that seems dry enough to walk on.", 0.4, 0.3, 0.3, 0.3),
+	PATH_CASTLE("castle", "a nicely paved path", 0.4, 0.3, 0.3, 0.3),
+	WALL_FIELD("brick wall", "a sturdy brick wall"),
+	WALL_FOREST("forest wall", "a dark, dense patch of trees. To close together to get through."),
+	WALL_MOUNTAIN("mountain wall", "a nicely paved path"),
+	WALL_LAKE("lake", "a beautiful, sparkling lake"),
+	WALL_CASTLE("castle wall", "a nicely paved path");
 	
 	private boolean isAWall;
 	private String name, desc;
@@ -29,6 +29,8 @@ public enum EnumLocations{
 	
 	private EnumLocations(String name, String desc){
 		isAWall = true;
+		this.name = name;
+		this.desc = desc;
 	}
 	
 	public boolean isAWall(){

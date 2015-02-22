@@ -36,15 +36,28 @@ public class Game {
 						case "west":
 							player.walk(3, map);
 							break;
+						default:
+							GameUtil.println("Please enter a valid command.");
+							break;
 					}
 					break;
-				case "search for":
+				case "look":
 					switch(scan.next().toLowerCase()){
-						case "items":
-							
+						case "for":
+							switch(scan.next().toLowerCase()){
+								case "items":
+									player.lookForItems(map[player.getYPos()][player.getXPos()]);
+									break;
+								case "enemies":
+									//TODO Allow user to fight enemies
+									break;
+								default:
+									GameUtil.println("Please enter a valid command.");
+									break;
+							}
 							break;
-						case "enemy":
-							//TODO Allow user to fight enemies
+						default:
+							GameUtil.println("Please enter a valid command.");
 							break;
 					}
 					break;
@@ -55,9 +68,11 @@ public class Game {
 				case "save quit":
 					GameUtil.saveGame(player);
 					playGame = false;
+					System.exit(0);
 					break;
 				case "quit":
 					playGame = false;
+					System.exit(0);
 					break;
 				case "help":
 					GameUtil.println("\n~Available Commands~"
