@@ -2,7 +2,7 @@ package loz.items;
 
 public class Weapon extends Item{
 	
-	private String name, desc;
+	private String name, desc, weaponID;
 	private int damage;
 	private double critChance;
 	
@@ -13,12 +13,13 @@ public class Weapon extends Item{
 	 * @param damage Damage weapon does
 	 * @param critChance Chance of a critical hit
 	 */
-	public Weapon(String name, String desc, int damage, double critChance){
-		super(name, desc);
-		this.name = name;
-		this.desc = desc;
-		this.damage = damage;
-		this.critChance = critChance;
+	public Weapon(EnumWeapon enumWeapon){
+		super(enumWeapon.getName(), enumWeapon.getDesc());
+		this.name = enumWeapon.getName();
+		this.desc = enumWeapon.getDesc();
+		this.weaponID = enumWeapon.getWeponID();
+		this.damage = enumWeapon.getDamage();
+		this.critChance = enumWeapon.getCritChance();
 	}
 	
 	@Override
@@ -29,6 +30,10 @@ public class Weapon extends Item{
 	@Override
 	public String getDesc(){
 		return desc;
+	}
+	
+	public String getWeaponID(){
+		return weaponID;
 	}
 	
 	/**

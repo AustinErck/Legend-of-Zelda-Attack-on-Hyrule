@@ -43,10 +43,7 @@ public class GameUtil {
 						0 + GameUtil.fileNewLine + 
 						0 + GameUtil.fileNewLine + 
 						saveID + GameUtil.fileNewLine + 
-						"Wooden Sword" + GameUtil.fileNewLine + 
-						"The basic sword you start with" + GameUtil.fileNewLine + 
-						1 + GameUtil.fileNewLine + 
-						0.15 + GameUtil.fileNewLine + 
+						"WOODEN_SWORD" + GameUtil.fileNewLine + 
 						false + GameUtil.fileNewLine + 
 						false + GameUtil.fileNewLine + 
 						false);
@@ -70,10 +67,7 @@ public class GameUtil {
 						player.getArrows() + GameUtil.fileNewLine + 
 						player.getRupees() + GameUtil.fileNewLine +  
 						player.getSaveID() + GameUtil.fileNewLine + 
-						player.getWeapon().getName() + GameUtil.fileNewLine + 
-						player.getWeapon().getDesc() + GameUtil.fileNewLine + 
-						player.getWeapon().getDamage() + GameUtil.fileNewLine + 
-						player.getWeapon().getCritChance() + GameUtil.fileNewLine + 
+						player.getWeapon().getWeaponID() + GameUtil.fileNewLine +
 						player.getElements()[0] + GameUtil.fileNewLine + 
 						player.getElements()[1] + GameUtil.fileNewLine + 
 						player.getElements()[2]);

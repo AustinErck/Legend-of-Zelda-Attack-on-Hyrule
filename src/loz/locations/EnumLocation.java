@@ -1,6 +1,6 @@
 package loz.locations;
 
-public enum EnumLocations{
+public enum EnumLocation{
 	
 	PATH_FIELD("field", "a wide open field", 0.4, 0.3, 0.3, 0.3),
 	PATH_FOREST("forest clearing", "a clearing in the forest ahead", 0.4, 0.3, 0.3, 0.3),
@@ -17,7 +17,7 @@ public enum EnumLocations{
 	private String name, desc;
 	private double enemySpawnRate,enemyDifficulty, itemSpawnRate, itemRarity;
 	
-	private EnumLocations(String name, String desc, double enemySpawnRate, double enemyDifficulty, double itemSpawnRate, double itemRarity){
+	private EnumLocation(String name, String desc, double enemySpawnRate, double enemyDifficulty, double itemSpawnRate, double itemRarity){
 		isAWall = false;
 		this.name = name;
 		this.desc = desc;
@@ -27,7 +27,7 @@ public enum EnumLocations{
 		this.itemRarity = itemRarity;
 	}
 	
-	private EnumLocations(String name, String desc){
+	private EnumLocation(String name, String desc){
 		isAWall = true;
 		this.name = name;
 		this.desc = desc;

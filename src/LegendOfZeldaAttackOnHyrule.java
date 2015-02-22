@@ -16,21 +16,19 @@ public class LegendOfZeldaAttackOnHyrule {
 		loadMainMenu();
 		while(!quitGame){
 			GameUtil.print("\nPlease enter a command, type help: ");
-			switch(scan.next().toLowerCase()){
-				case "1":
+			switch(scan.nextLine().toLowerCase()){
+				case "load 1":
 					loadSave(profile[0], 1);
 					break;
-				case "2":
+				case "load 2":
 					loadSave(profile[1], 2);
 					break;
-				case "3":
+				case "load 3":
 					loadSave(profile[2], 3);
 					break;
 				case "help":
 					GameUtil.println("\n~Available Commands~"
-							+ "\n   1: Loads Save 1"
-							+ "\n   2: Loads Save 2"
-							+ "\n   3: Loads Save 3"
+							+ "\n   Load #: Loads the save of that number EX: Load 1"
 							+ "\n   Help: Lists commands"
 							+ "\n   Quit: Quits game");
 					break;

@@ -3,9 +3,9 @@ package loz.entities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import loz.items.EnumWeapon;
 import loz.items.Weapon;
 import loz.locations.Location;
-import loz.mechanics.Game;
 import loz.mechanics.GameUtil;
 
 public class Player extends Entity{
@@ -13,7 +13,7 @@ public class Player extends Entity{
 	private String name;
 	private int health, totalHealth, arrows, rupees, xPos, yPos, saveID;
 	private Weapon weapon;
-	private boolean isAlive, newSave = false;
+	private boolean isAlive, newSave = true;
 	private boolean[] elements = new boolean[3];
 	//private Scanner scan = new Scanner(System.in);
 	
@@ -34,10 +34,11 @@ public class Player extends Entity{
 			xPos = 0;
 			yPos = 0;
 			saveID = Integer.parseInt(file.readLine());
-			weapon = new Weapon(file.readLine(), file.readLine(), Integer.parseInt(file.readLine()), Double.parseDouble(file.readLine()));
+			weapon = new Weapon(EnumWeapon.valueOf(file.readLine().toUpperCase()));
 			elements[0] = Boolean.parseBoolean(file.readLine());
 			elements[1] = Boolean.parseBoolean(file.readLine());
 			elements[2] = Boolean.parseBoolean(file.readLine());
+			newSave = false;
 			
 			file.close();
 			}catch(Exception e){}
@@ -48,38 +49,6 @@ public class Player extends Entity{
 	 */
 	public Player(){
 		newSave = true;
-	}
-	
-	@Override
-	public void update() {
-		// TODO Add update info
-		if(!isAlive){
-			
-		}
-	} 
-	
-	/**
-	 * Damages the player
-	 * @param damage The amount of health points or half hearts you want to take away from the player
-	 */
-	public void damage(int damage){
-		if(damage > health){
-			
-		}else{
-			isAlive = false;
-		}
-	}
-	
-	/**
-	 * Heals the player
-	 * @param heal Health points or half heart you want to heal the player
-	 */
-	public void heal(int heal){
-		if(heal + health <= totalHealth){
-			health += heal;
-		}else{
-			health = totalHealth;
-		}
 	}
 	
 	/**
@@ -140,10 +109,37 @@ public class Player extends Entity{
 		}
 	}
 	
-	public void lookForItems(Location location){
-		location.generateItems(location.getEnumLocations());
-		GameUtil.println("Would you like to pick up all the items? ");
-		location.getItems(this, Game.scan.next());
+	public void lookAtInventory(){
+		GameUtil.println("~ Inventory\n" +
+						 "   ~ " + weapon.getName() + ": " + weapon.getDesc() + "\n" +
+						 "   ~ " + rupees + " Rupees\n" +
+						 "   ~ " + arrows + " Arrows\n\n");
+	}
+	
+	@Override
+	public void update() {
+		// TODO Add update info
+		if(!isAlive){
+			
+		}
+	} 
+	
+	@Override
+	public void damage(int damage){
+		if(damage < health){
+			health -= damage;
+		}else{
+			isAlive = false;
+		}
+	}
+	
+	@Override
+	public void heal(int heal){
+		if(heal + health <= totalHealth){
+			health += heal;
+		}else{
+			health = totalHealth;
+		}
 	}
 	
 	@Override
@@ -169,6 +165,10 @@ public class Player extends Entity{
 		return arrows;
 	}
 	
+	/**
+	 * Adds arrows to the players inventory
+	 * @param addedArrows Number of arrows to add
+	 */
 	public void addArrows(int addedArrows){
 		rupees += addedArrows;
 	}
@@ -181,6 +181,10 @@ public class Player extends Entity{
 		return rupees;
 	}
 	
+	/**
+	 * Adds rupees to the player's inventory
+	 * @param addedRupees The number of rupees to add
+	 */
 	public void addRupees(int addedRupees){
 		rupees += addedRupees;
 	}
@@ -193,11 +197,6 @@ public class Player extends Entity{
 		return xPos;
 	}
 	
-	
-	public void setXPos(int pos){
-		xPos = pos;
-	}
-	
 	/**
 	 * Returns the y position the player is ay
 	 * @return y position 
@@ -206,9 +205,9 @@ public class Player extends Entity{
 		return yPos;
 	}
 	
-	
-	public void setYPos(int pos){
-		yPos = pos;
+	public void setStartPosition(int xPos, int yPos){
+		this.xPos = xPos;
+		this.yPos = yPos;
 	}
 	
 	/**
@@ -222,6 +221,11 @@ public class Player extends Entity{
 	@Override
 	public Weapon getWeapon() {
 		return weapon;
+	}
+	
+	@Override
+	public boolean isAlive() {
+		return isAlive;
 	}
 	
 	/**

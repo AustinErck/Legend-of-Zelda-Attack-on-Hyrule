@@ -47,6 +47,12 @@ public abstract class Entity extends GameObject {
 	public abstract Weapon getWeapon();
 	
 	/**
+	 * Tests to see if the entity is alive
+	 * @return True if entity is alive
+	 */
+	public abstract boolean isAlive();
+	
+	/**
 	 * Outputs the players total health as a string of "<"s and "3"s
 	 * @return A string of hearts representing the players total health
 	 */
