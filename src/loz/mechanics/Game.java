@@ -10,7 +10,7 @@ public class Game {
 	
 	public Player player;
 	private boolean playGame = true;
-	Scanner scan = new Scanner(System.in);
+	public static Scanner scan = new Scanner(System.in);
 	private Location[][] map = new Location[3][3];
 	//private String[] regionName = {"Forest", "Northern Hyrule Field", "Death Mountain", "West Hyrule Field", "Hyrule Field", "East Hyrule Field", "Lake Hylia", "Southern Hyrule Field", "Castle Town"};
 	

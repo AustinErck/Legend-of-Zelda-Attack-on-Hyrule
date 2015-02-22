@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 import loz.items.Weapon;
 import loz.locations.Location;
+import loz.mechanics.Game;
 import loz.mechanics.GameUtil;
 
 public class Player extends Entity{
@@ -14,6 +15,7 @@ public class Player extends Entity{
 	private Weapon weapon;
 	private boolean isAlive, newSave = false;
 	private boolean[] elements = new boolean[3];
+	//private Scanner scan = new Scanner(System.in);
 	
 	/**
 	 * Creates a player object
@@ -140,6 +142,8 @@ public class Player extends Entity{
 	
 	public void lookForItems(Location location){
 		location.generateItems(location.getEnumLocations());
+		GameUtil.println("Would you like to pick up all the items? ");
+		location.getItems(this, Game.scan.next());
 	}
 	
 	@Override
@@ -163,6 +167,10 @@ public class Player extends Entity{
 	 */
 	public int getArrows(){
 		return arrows;
+	}
+	
+	public void addArrows(int addedArrows){
+		rupees += addedArrows;
 	}
 	
 	/**
