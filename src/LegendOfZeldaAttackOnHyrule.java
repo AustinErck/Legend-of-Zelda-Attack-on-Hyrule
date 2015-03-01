@@ -53,23 +53,27 @@ public class LegendOfZeldaAttackOnHyrule {
 		for (int i = 0; i < 3; i++) {
 			GameUtil.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n~   Save "
 					+ (i + 1));
-			if (new File("save" + (i + 1) + ".loz").exists() && !new File("save" + (i + 1) + ".loz").isDirectory()) {
+			if (new File("save" + (i + 1) + ".loz").exists()
+					&& !new File("save" + (i + 1) + ".loz").isDirectory()) {
 				try {
-					BufferedReader file = new BufferedReader(new FileReader("save" + (i + 1) + ".loz"));
+					BufferedReader file = new BufferedReader(new FileReader(
+							"save" + (i + 1) + ".loz"));
 					file.readLine();
-					
-					profile[i] = new Player(file.readLine(), 
-							Integer.parseInt(file.readLine()), 
-							Integer.parseInt(file.readLine()), 
-							Integer.parseInt(file.readLine()), 
-							Integer.parseInt(file.readLine()), 
-							Integer.parseInt(file.readLine()),  
-							new Weapon(EnumWeapon.valueOf(file.readLine().toUpperCase())), 
+
+					profile[i] = new Player(file.readLine(),
+							Integer.parseInt(file.readLine()),
+							Integer.parseInt(file.readLine()),
+							Integer.parseInt(file.readLine()),
+							Integer.parseInt(file.readLine()),
+							Integer.parseInt(file.readLine()), new Weapon(
+									EnumWeapon.valueOf(file.readLine()
+											.toUpperCase())),
 							Boolean.parseBoolean(file.readLine()),
 							Boolean.parseBoolean(file.readLine()),
 							Boolean.parseBoolean(file.readLine()));
 					file.close();
-				} catch (Exception e) {}
+				} catch (Exception e) {
+				}
 				loadProfile(profile[i]);
 			} else {
 				profile[i] = new Player();
@@ -100,7 +104,7 @@ public class LegendOfZeldaAttackOnHyrule {
 	 *            number
 	 */
 	private static void loadSave(Player player, int saveID) {
-		if (!profile[saveID-1].isNewSave()) {
+		if (!profile[saveID - 1].isNewSave()) {
 			new Game(player);
 		} else {
 			GameUtil.print("Please enter your characters name: ");

@@ -4,7 +4,6 @@ import loz.mechanics.GameObject;
 
 public class Item extends GameObject {
 
-
 	/**
 	 * Creates an Item object
 	 * 

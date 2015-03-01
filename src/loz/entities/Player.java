@@ -15,7 +15,9 @@ public class Player extends Entity {
 	 * 
 	 * @param fileURL
 	 */
-	public Player(String name, int currentHealth, int totalHealth, int arrows, int rupees, int saveID, Weapon weapon, boolean forestElement, boolean fireElement, boolean waterElement) {
+	public Player(String name, int currentHealth, int totalHealth, int arrows,
+			int rupees, int saveID, Weapon weapon, boolean forestElement,
+			boolean fireElement, boolean waterElement) {
 		super(name, "the player", totalHealth, currentHealth, weapon);
 		this.arrows = arrows;
 		this.rupees = rupees;
@@ -109,9 +111,9 @@ public class Player extends Entity {
 	}
 
 	public void lookAtInventory() {
-		GameUtil.println("~ Inventory\n" + "   ~ " + this.getWeapon().getName() + ": "
-				+ this.getWeapon().getDesc() + "\n" + "   ~ " + rupees + " Rupees\n"
-				+ "   ~ " + arrows + " Arrows\n\n");
+		GameUtil.println("~ Inventory\n" + "   ~ " + this.getWeapon().getName()
+				+ ": " + this.getWeapon().getDesc() + "\n" + "   ~ " + rupees
+				+ " Rupees\n" + "   ~ " + arrows + " Arrows\n\n");
 	}
 
 	/**

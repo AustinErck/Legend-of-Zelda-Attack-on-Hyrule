@@ -86,7 +86,7 @@ public class Game {
 				if (i == 1 && j == 1 || i == 2 && j == 1 || i == 0 && j == 1) {
 					map[i][j] = new Location(EnumLocation.PATH_FIELD);
 				} else {
-					map[i][j] = new Location(EnumLocation.WALL_FIELD);
+					map[i][j] = new Location(EnumLocation.WALL_LAKE);
 				}
 			}
 		}

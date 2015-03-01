@@ -26,7 +26,9 @@ public class CardDemo implements ItemListener {
 		card1.add(new JButton("Button 3"));
 
 		JPanel card2 = new JPanel();
-		card2.add(new JTextField("TextField", 20));
+		card2.add(new JButton("But"));
+		card2.add(new JButton("But"));
+		card2.add(new JButton("<3 Pebbles"));
 
 		// Create the panel that contains the "cards".
 		cards = new JPanel(new CardLayout());

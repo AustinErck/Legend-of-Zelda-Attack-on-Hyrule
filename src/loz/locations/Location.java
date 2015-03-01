@@ -84,7 +84,11 @@ public class Location extends GameObject {
 	}
 
 	public void lookForEnemies(Player player, EnumLocation location) {
-		// TODO
+		if (enemies == null) {
+			enemies = new Enemy[2];
+			int[] genEnemies;
+
+		}
 	}
 
 	/**
@@ -94,14 +98,6 @@ public class Location extends GameObject {
 	 */
 	public boolean isAWall() {
 		return locationInfo.isAWall();
-	}
-
-	/**
-	 * Gets the name of the current location
-	 */
-	@Override
-	public String getName() {
-		return locationInfo.getName();
 	}
 
 	/**

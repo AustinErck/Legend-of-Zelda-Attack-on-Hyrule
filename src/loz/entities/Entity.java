@@ -8,37 +8,40 @@ public class Entity extends GameObject {
 	private int totalHealth, currentHealth;
 	private Weapon weapon;
 	private boolean isAlive;
-	
-	public Entity(String name, String desc, int totalHealth, int currentHealth, Weapon weapon){
+
+	public Entity(String name, String desc, int totalHealth, int currentHealth,
+			Weapon weapon) {
 		super(name, desc);
 		this.totalHealth = totalHealth;
 		this.currentHealth = currentHealth;
 		this.weapon = weapon;
 		this.isAlive = true;
 	}
-	
+
 	/**
 	 * Damages the entity
 	 * 
-	 * @param damage The amount of damage the entity takes
+	 * @param damage
+	 *            The amount of damage the entity takes
 	 */
-	public void damage(int damage){
-		if(damage < currentHealth){
+	public void damage(int damage) {
+		if (damage < currentHealth) {
 			currentHealth -= damage;
-		}else{
+		} else {
 			isAlive = false;
 		}
 	}
 
 	/**
 	 * Heals the entity
-	 * @param heal The amount of health the entity gets
+	 * 
+	 * @param heal
+	 *            The amount of health the entity gets
 	 */
-	public void heal(int heal){
-		if((heal + currentHealth) > totalHealth){
+	public void heal(int heal) {
+		if ((heal + currentHealth) > totalHealth) {
 			currentHealth = totalHealth;
-		}
-		else{
+		} else {
 			currentHealth += heal;
 		}
 	}
@@ -48,7 +51,7 @@ public class Entity extends GameObject {
 	 * 
 	 * @return Total health of entity
 	 */
-	public int getHealth(){
+	public int getHealth() {
 		return currentHealth;
 	}
 
@@ -57,7 +60,7 @@ public class Entity extends GameObject {
 	 * 
 	 * @return Total health of entity
 	 */
-	public int getTotalHealth(){
+	public int getTotalHealth() {
 		return totalHealth;
 	}
 
@@ -66,7 +69,7 @@ public class Entity extends GameObject {
 	 * 
 	 * @return Weapon entity has
 	 */
-	public Weapon getWeapon(){
+	public Weapon getWeapon() {
 		return weapon;
 	}
 
@@ -75,7 +78,7 @@ public class Entity extends GameObject {
 	 * 
 	 * @return True if entity is alive
 	 */
-	public boolean isAlive(){
+	public boolean isAlive() {
 		return isAlive;
 	}
 
