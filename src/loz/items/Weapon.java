@@ -1,5 +1,7 @@
 package loz.items;
 
+import loz.entities.Entity;
+
 public class Weapon extends Item {
 
 	private String weaponID;
@@ -29,21 +31,29 @@ public class Weapon extends Item {
 		return weaponID;
 	}
 
-	/**
-	 * Gets the base damage the weapon deals
-	 * 
-	 * @return The base damage the weapon deals
-	 */
-	public int getDamage() {
+	public double slash(Entity entity){
 		return damage;
 	}
-
-	/**
-	 * Gets the chance of a critical hit when attacking
-	 * 
-	 * @return Chance of a critical hit when attacking
-	 */
-	public double getCritChance() {
-		return critChance;
+	
+	public double hammer(){
+		int tmp = (int) (Math.random() * 100);
+		if(tmp <= 79){
+			if(tmp <= (critChance * 100)){
+				return (double) damage * 1.5;
+			}else{
+				return damage;
+			}
+		}else{
+			return 0;
+		}
+	}
+	
+	public double jab(){
+		int tmp = (int) (Math.random() * 100);
+		if(tmp <= 60){
+			return (double) damage * 2;
+		}else{
+			return damage;
+		}
 	}
 }
