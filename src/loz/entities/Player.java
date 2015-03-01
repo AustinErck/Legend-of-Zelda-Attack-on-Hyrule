@@ -15,12 +15,12 @@ public class Player extends Entity {
 	 * 
 	 * @param fileURL
 	 */
-	public Player(String name, String desc, int currentHealth, int totalHealth, int arrows, int rupees, int xPos, int yPos, int saveID, Weapon weapon, boolean forestElement, boolean fireElement, boolean waterElement) {
-		super(name, desc, totalHealth, currentHealth, weapon);
+	public Player(String name, int currentHealth, int totalHealth, int arrows, int rupees, int saveID, Weapon weapon, boolean forestElement, boolean fireElement, boolean waterElement) {
+		super(name, "the player", totalHealth, currentHealth, weapon);
 		this.arrows = arrows;
 		this.rupees = rupees;
-		this.xPos = xPos;
-		this.yPos = yPos;
+		this.xPos = 0;
+		this.yPos = 0;
 		this.saveID = saveID;
 		this.elements[0] = forestElement;
 		this.elements[1] = fireElement;

@@ -59,20 +59,15 @@ public class LegendOfZeldaAttackOnHyrule {
 					file.readLine();
 					
 					profile[i] = new Player(file.readLine(), 
-							"the player", 
 							Integer.parseInt(file.readLine()), 
 							Integer.parseInt(file.readLine()), 
 							Integer.parseInt(file.readLine()), 
 							Integer.parseInt(file.readLine()), 
-							Integer.parseInt(file.readLine()), 
-							Integer.parseInt(file.readLine()), 
-							Integer.parseInt(file.readLine()), 
+							Integer.parseInt(file.readLine()),  
 							new Weapon(EnumWeapon.valueOf(file.readLine().toUpperCase())), 
 							Boolean.parseBoolean(file.readLine()),
 							Boolean.parseBoolean(file.readLine()),
 							Boolean.parseBoolean(file.readLine()));
-
-
 					file.close();
 				} catch (Exception e) {}
 				loadProfile(profile[i]);
@@ -105,7 +100,7 @@ public class LegendOfZeldaAttackOnHyrule {
 	 *            number
 	 */
 	private static void loadSave(Player player, int saveID) {
-		if (profile[saveID].isNewSave()) {
+		if (!profile[saveID-1].isNewSave()) {
 			new Game(player);
 		} else {
 			GameUtil.print("Please enter your characters name: ");
