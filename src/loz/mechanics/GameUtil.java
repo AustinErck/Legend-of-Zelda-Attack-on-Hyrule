@@ -82,4 +82,10 @@ public class GameUtil {
 		} catch (Exception e) {
 		}
 	}
+
+	public static void clear() {
+		for (int c = 0; c < 500; ++c) {
+			System.out.print("\b");
+		}
+	}
 }

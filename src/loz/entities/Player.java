@@ -6,7 +6,7 @@ import loz.mechanics.GameUtil;
 
 public class Player extends Entity {
 
-	private int arrows, rupees, xPos, yPos, saveID;
+	private int arrows, rupees, xPos, yPos, regionXPos, regionYPos, saveID;
 	private boolean newSave = true;
 	private boolean[] elements = new boolean[3];
 
@@ -21,6 +21,8 @@ public class Player extends Entity {
 		super(name, "the player", totalHealth, currentHealth, weapon);
 		this.arrows = arrows;
 		this.rupees = rupees;
+		this.regionXPos = 1;
+		this.regionYPos = 1;
 		this.xPos = 0;
 		this.yPos = 0;
 		this.saveID = saveID;
@@ -154,6 +156,24 @@ public class Player extends Entity {
 		rupees += addedRupees;
 	}
 
+	/**
+	 * Returns xPos of the current region the player is in
+	 * 
+	 * @return x position of region
+	 */
+	public int getRegionXPos() {
+		return regionXPos;
+	}
+	
+	/**
+	 * Returns yPos of the current region the player is in
+	 * 
+	 * @return y position of region
+	 */
+	public int getRegionYPos() {
+		return regionYPos;
+	}
+	
 	/**
 	 * Returns the x position the player is at
 	 * 

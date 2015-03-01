@@ -16,8 +16,8 @@ public class LegendOfZeldaAttackOnHyrule {
 	private static boolean quitGame = false;
 
 	public static void main(String[] args) {
-		loadMainMenu();
 		while (!quitGame) {
+			loadMainMenu();
 			GameUtil.print("\nPlease enter a command, type help: ");
 			switch (scan.nextLine().toLowerCase()) {
 			case "load 1":
@@ -30,6 +30,7 @@ public class LegendOfZeldaAttackOnHyrule {
 				loadSave(profile[2], 3);
 				break;
 			case "help":
+				GameUtil.clear();
 				GameUtil.println("\n~Available Commands~"
 						+ "\n   Load #: Loads the save of that number EX: Load 1"
 						+ "\n   Help: Lists commands" + "\n   Quit: Quits game");

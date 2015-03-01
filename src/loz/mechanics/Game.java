@@ -5,18 +5,19 @@ import java.util.Scanner;
 import loz.entities.Player;
 import loz.locations.EnumLocation;
 import loz.locations.Location;
+import loz.locations.Region;
 
 public class Game {
 
 	public Player player;
 	private boolean playGame = true;
 	public static Scanner scan = new Scanner(System.in);
-	private Location[][] map = new Location[3][3];
+	private Region[][] map = new Region[3][3];
 
-	// private String[] regionName = {"Forest", "Northern Hyrule Field",
-	// "Death Mountain", "West Hyrule Field", "Hyrule Field",
-	// "East Hyrule Field", "Lake Hylia", "Southern Hyrule Field",
-	// "Castle Town"};
+	private String[] regionName = {"Forest", "Northern Hyrule Field",
+	"Death Mountain", "West Hyrule Field", "Hyrule Field",
+	"East Hyrule Field", "Lake Hylia", "Southern Hyrule Field",
+	"Castle Town"};
 
 	public Game(Player player) {
 		this.player = player;
@@ -26,27 +27,34 @@ public class Game {
 			GameUtil.print("\nEnter an action: ");
 			switch (scan.nextLine().toLowerCase()) {
 			case "go north":
-				player.walk(0, map);
+				player.walk(0, map[player.getRegionYPos()][player.getRegionXPos()].getRegionMap());
 				break;
 			case "go east":
-				player.walk(1, map);
+				player.walk(1, map[player.getRegionYPos()][player.getRegionXPos()].getRegionMap());
 				break;
 			case "go south":
-				player.walk(2, map);
+				player.walk(2, map[player.getRegionYPos()][player.getRegionXPos()].getRegionMap());
 				break;
 			case "go west":
-				player.walk(3, map);
+				player.walk(3, map[player.getRegionYPos()][player.getRegionXPos()].getRegionMap());
 				break;
 			case "look for items":
-				map[player.getYPos()][player.getXPos()].lookForItems(player,
-						map[player.getYPos()][player.getXPos()]
-								.getEnumLocations());
+				map[player.getRegionYPos()][player.getRegionYPos()].getLocationInfo(player.getXPos(), player.getYPos()).lookForItems(player);
 				break;
 			case "look for enemies":
 				// TODO
 				break;
 			case "map":
-				// TODO
+				for(int i = 0; i < 3; i++){
+					for(int j = 0; j < 3; j++){
+						if(i == player.getRegionYPos() && j == player.getRegionXPos()){
+							GameUtil.print("[*]");
+						}else{
+							GameUtil.print("[ ]");
+						}
+					}
+					GameUtil.println("");
+				}
 				break;
 			case "inventory":
 				player.lookAtInventory();
@@ -81,13 +89,20 @@ public class Game {
 	}
 
 	public void loadMap() {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (i == 1 && j == 1 || i == 2 && j == 1 || i == 0 && j == 1) {
-					map[i][j] = new Location(EnumLocation.PATH_FIELD);
+		Location[][] tmpMap = new Location[10][10];
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				if (i == 0 || i == 9 || i == 1 && j == 0) {
+					tmpMap[i][j] = new Location(EnumLocation.WALL_FOREST);
 				} else {
-					map[i][j] = new Location(EnumLocation.WALL_LAKE);
+					tmpMap[i][j] = new Location(EnumLocation.PATH_FOREST);
 				}
+			}
+		}
+		int counter = 0;
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){
+				map[i][j] = new Region(regionName[counter], "region " + counter, tmpMap);
 			}
 		}
 	}

@@ -29,11 +29,9 @@ public class Location extends GameObject {
 	 * 
 	 * @param player
 	 *            The current player
-	 * @param location
-	 *            The location the player is at
 	 * @return
 	 */
-	public void lookForItems(Player player, EnumLocation location) {
+	public void lookForItems(Player player) {
 		if (items == null) {
 			items = new int[3];
 			int[] genItems = {
