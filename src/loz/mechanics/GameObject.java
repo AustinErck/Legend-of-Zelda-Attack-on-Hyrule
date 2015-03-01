@@ -1,7 +1,28 @@
 package loz.mechanics;
 
-public abstract class GameObject {
+public class GameObject {
 
-	public abstract String getName();
+	private String name, desc;
 	
+	public GameObject(String name, String desc){
+		 this.name = name;
+		 this.desc = desc;
+	}
+	
+	/**
+	 * Gets the objects name
+	 * @return The object's name
+	 */
+	public String getName(){
+		return name;
+	}
+	
+	/**
+	 * Gets the objects description
+	 * @return The object's description
+	 */
+	public String getDesc(){
+		return desc;
+	}
+
 }

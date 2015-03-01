@@ -3,69 +3,97 @@ package loz.entities;
 import loz.items.Weapon;
 import loz.mechanics.GameObject;
 
-public abstract class Entity extends GameObject {
+public class Entity extends GameObject {
 
-	/**
-	 * Called when turn if over to update entity
-	 */
-	public abstract void update();
+	private int totalHealth, currentHealth;
+	private Weapon weapon;
+	private boolean isAlive;
+	
+	public Entity(String name, String desc, int totalHealth, int currentHealth, Weapon weapon){
+		super(name, desc);
+		this.totalHealth = totalHealth;
+		this.currentHealth = currentHealth;
+		this.weapon = weapon;
+		this.isAlive = true;
+	}
 	
 	/**
 	 * Damages the entity
+	 * 
 	 * @param damage The amount of damage the entity takes
 	 */
-	public abstract void damage(int damage);
-	
+	public void damage(int damage){
+		if(damage < currentHealth){
+			currentHealth -= damage;
+		}else{
+			isAlive = false;
+		}
+	}
+
 	/**
 	 * Heals the entity
 	 * @param heal The amount of health the entity gets
 	 */
-	public abstract void heal(int heal);
-	
-	/**
-	 * Gets the name of the entity
-	 */
-	@Override
-	public abstract String getName();
-	
+	public void heal(int heal){
+		if((heal + currentHealth) > totalHealth){
+			currentHealth = totalHealth;
+		}
+		else{
+			currentHealth += heal;
+		}
+	}
+
 	/**
 	 * Gets the current health of the entity
+	 * 
 	 * @return Total health of entity
 	 */
-	public abstract int getHealth();
-	
+	public int getHealth(){
+		return currentHealth;
+	}
+
 	/**
 	 * Gets the total health of the entity
+	 * 
 	 * @return Total health of entity
 	 */
-	public abstract int getTotalHealth();
-	
+	public int getTotalHealth(){
+		return totalHealth;
+	}
+
 	/**
 	 * Gets the weapon the entity has
+	 * 
 	 * @return Weapon entity has
 	 */
-	public abstract Weapon getWeapon();
-	
+	public Weapon getWeapon(){
+		return weapon;
+	}
+
 	/**
 	 * Tests to see if the entity is alive
+	 * 
 	 * @return True if entity is alive
 	 */
-	public abstract boolean isAlive();
-	
+	public boolean isAlive(){
+		return isAlive;
+	}
+
 	/**
 	 * Outputs the players total health as a string of "<"s and "3"s
+	 * 
 	 * @return A string of hearts representing the players total health
 	 */
-	public String totalHealthToString(Player player){
+	public String totalHealthToString(Player player) {
 		String output = "";
-		for(int j = 0; j < player.getTotalHealth(); j++){
-			if( j % 2 == 0){
+		for (int j = 0; j < player.getTotalHealth(); j++) {
+			if (j % 2 == 0) {
 				output += "<";
-			}else{
+			} else {
 				output += "3 ";
 			}
 		}
 		return output;
 	}
-	
+
 }

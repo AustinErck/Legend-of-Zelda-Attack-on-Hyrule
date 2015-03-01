@@ -29,7 +29,7 @@ public class GameWindow {
 		setFrame(new JFrame());
 		getFrame().setBounds(100, 100, 406, 517);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		GameWindow gameWindow = new GameWindow();
 		gameWindow.addComponentToPane(window.getContentPane());
 		window.pack();
@@ -44,32 +44,35 @@ public class GameWindow {
 		this.window = frame;
 		window.setResizable(false);
 		window.setAutoRequestFocus(false);
-		window.setIconImage(Toolkit.getDefaultToolkit().getImage("F:\\Documents\\Projects\\Legend-of-Zelda-Attack-on-Hyrule\\src\\loz\\resources\\icon.png"));
+		window.setIconImage(Toolkit
+				.getDefaultToolkit()
+				.getImage(
+						"F:\\Documents\\Projects\\Legend-of-Zelda-Attack-on-Hyrule\\src\\loz\\resources\\icon.png"));
 		window.setTitle("Legend of Zelda: Attack on Hyrule");
 		window.setSize(396, 452);
 	}
-	
-    public void addComponentToPane(Container pane) {
-        JPanel comboBoxPane = new JPanel();
-        TextArea textArea = new TextArea();
-        textArea.setEditable(false);
-        comboBoxPane.add(textArea);
-         
-        JPanel cardMainMenuControls = new JPanel();
-        cardMainMenuControls.add(new JButton("Button 1"));
-        cardMainMenuControls.add(new JButton("Button 2"));
-        cardMainMenuControls.add(new JButton("Button 3"));
-         
-        JPanel cardGameControls = new JPanel();
-        cardGameControls.add(new JButton("Button 1"));
-        cardGameControls.add(new JButton("Button 2"));
-        cardGameControls.add(new JButton("Button 3"));
-         
-        cards = new JPanel(new CardLayout());
-        cards.add(cardMainMenuControls);
-        cards.add(cardGameControls);
-         
-        pane.add(comboBoxPane, BorderLayout.PAGE_START);
-        pane.add(cards, BorderLayout.CENTER);
-    }
+
+	public void addComponentToPane(Container pane) {
+		JPanel comboBoxPane = new JPanel();
+		TextArea textArea = new TextArea();
+		textArea.setEditable(false);
+		comboBoxPane.add(textArea);
+
+		JPanel cardMainMenuControls = new JPanel();
+		cardMainMenuControls.add(new JButton("Button 1"));
+		cardMainMenuControls.add(new JButton("Button 2"));
+		cardMainMenuControls.add(new JButton("Button 3"));
+
+		JPanel cardGameControls = new JPanel();
+		cardGameControls.add(new JButton("Button 1"));
+		cardGameControls.add(new JButton("Button 2"));
+		cardGameControls.add(new JButton("Button 3"));
+
+		cards = new JPanel(new CardLayout());
+		cards.add(cardMainMenuControls);
+		cards.add(cardGameControls);
+
+		pane.add(comboBoxPane, BorderLayout.PAGE_START);
+		pane.add(cards, BorderLayout.CENTER);
+	}
 }

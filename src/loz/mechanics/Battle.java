@@ -5,7 +5,7 @@ import loz.entities.Player;
 
 public class Battle {
 
-	public Battle(Player player, Enemy Enemy){
-		
+	public Battle(Player player, Enemy Enemy) {
+
 	}
 }
