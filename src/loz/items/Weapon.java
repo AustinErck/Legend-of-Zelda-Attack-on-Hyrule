@@ -1,6 +1,7 @@
 package loz.items;
 
 import loz.entities.Entity;
+import loz.mechanics.GameUtil;
 
 public class Weapon extends Item {
 
@@ -27,6 +28,15 @@ public class Weapon extends Item {
 		this.critChance = enumWeapon.getCritChance();
 	}
 
+	public String criticalString(int a){
+		if(a == 0){
+			return "Critical Hit!!!!";
+		}
+		else{
+			return "You missed!!!";
+		}
+	}
+	
 	public String getWeaponID() {
 		return weaponID;
 	}
@@ -56,4 +66,32 @@ public class Weapon extends Item {
 			return damage;
 		}
 	}
+	public double slash(){
+		int tmp = (int) (Math.random() * 100);
+		if(tmp <= 75){
+			return (double) damage * 2;
+		}else{
+			return damage;
+		}
+	}
+	public double upperCut(){
+		int tmp = (int) (Math.random() * 100);
+		if(tmp <= 50){
+			return (double) damage * 2;
+		}else{
+			return damage;
+		}
+	}
+	public double criticalChance(){
+		int tmp = (int) (Math.random() * 100);
+		if(tmp <= (critChance * 100)){
+			GameUtil.println(criticalString(0));
+			return (double) damage * 1.5;
+			
+		}else{
+			GameUtil.println(criticalString(2));
+			return 0;
+		}
+	}
+	
 }
