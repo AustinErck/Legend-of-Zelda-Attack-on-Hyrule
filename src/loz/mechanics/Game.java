@@ -5,6 +5,7 @@ import java.util.Scanner;
 import loz.entities.Player;
 import loz.locations.EnumLocation;
 import loz.locations.Location;
+import loz.locations.MapGenerator;
 import loz.locations.Region;
 
 public class Game {
@@ -89,20 +90,41 @@ public class Game {
 	}
 
 	public void loadMap() {
-		Location[][] tmpMap = new Location[10][10];
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				if (i == 0 || i == 9 || i == 1 && j == 0) {
-					tmpMap[i][j] = new Location(EnumLocation.WALL_FOREST);
-				} else {
-					tmpMap[i][j] = new Location(EnumLocation.PATH_FOREST);
+		int tmp = 0;
+		Region reg = null;
+		for(int i = 0; i < map.length; i++){
+			for(int j = 0; j < map[0].length; j++){
+				switch(tmp){
+				case 0:
+					reg = new Region(regionName[tmp], MapGenerator.getForest());
+					break;
+				case 1:
+					reg = new Region(regionName[tmp], MapGenerator.getFieldNorth());
+					break;
+				case 2:
+					reg = new Region(regionName[tmp], MapGenerator.getLake());
+					break;
+				case 3:
+					reg = new Region(regionName[tmp], MapGenerator.getFieldWest());
+					break;
+				case 4:
+					reg = new Region(regionName[tmp], MapGenerator.getFieldMiddle());
+					break;
+				case 5:
+					reg = new Region(regionName[tmp], MapGenerator.getFieldEast());
+					break;
+				case 6:
+					reg = new Region(regionName[tmp], MapGenerator.getMountain());
+					break;
+				case 7:
+					reg = new Region(regionName[tmp], MapGenerator.getFieldSouth());
+					break;
+				case 8:
+					reg = new Region(regionName[tmp], MapGenerator.getCastle());
+					break;
 				}
-			}
-		}
-		int counter = 0;
-		for(int i = 0; i < 3; i++){
-			for(int j = 0; j < 3; j++){
-				map[i][j] = new Region(regionName[counter], "region " + counter, tmpMap);
+				map[i][j] = reg;
+				tmp++;
 			}
 		}
 	}

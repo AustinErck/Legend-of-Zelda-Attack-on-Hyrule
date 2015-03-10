@@ -6,8 +6,8 @@ public class Region extends GameObject{
 
 	private Location[][] regionMap;
 	
-	public Region(String name, String desc,Location[][] regionMap) {
-		super(name, desc);
+	public Region(String name, Location[][] regionMap) {
+		super(name, "A region");
 		if(regionMap.length == 10 && regionMap[0].length == 10){
 			this.regionMap = regionMap;
 		}else{
