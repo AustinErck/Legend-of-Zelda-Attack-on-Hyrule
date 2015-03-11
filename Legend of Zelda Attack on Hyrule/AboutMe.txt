@@ -1,0 +1,21 @@
+~~~~~~~~~~Legend of Zelda: Attack on Hyrule~~~~~~~~~~
+Goal: Get the three elements and get the master sword!
+
+What can I do?
+	Fight monsters with "look for enemies"
+	Find items or elements(only in temples) with "look for items"
+	Travel with "move <direction>"
+	Look at which region you are in with "map"
+	Get your cords with "cords"
+	Look at your inventory with "inventory"
+	Save game with "save" or "save and quit"
+	Quit with "quit"
+
+Enemies
+	Enemies appear in groups of 2 at every location. Their difficulty is 
+	chosen by a bottom heavy random number generator. This means harder 
+	enemies appear less often than easy ones
+
+Dungeons
+	There are 3 dungeons located in the north east/west corners and south west corner
+	A castle is in the southern corner that once you get all three elements you can get the master sword in
