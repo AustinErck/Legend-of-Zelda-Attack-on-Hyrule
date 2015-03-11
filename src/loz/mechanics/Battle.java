@@ -10,7 +10,7 @@ public class Battle {
 		int rand = (int)(Math.random() * 2);
 		String temp;
 		while(player.isAlive() || enemy.isAlive()){
-			System.out.println("Type help for commands");
+			System.out.print("\nEnter an action: ");
 			temp = Game.scan.next();
 			if(rand == 0){
 				Weapon tmp = enemy.getWeapon();

@@ -1,7 +1,9 @@
 package loz.locations;
 
 import loz.entities.Enemy;
+import loz.entities.EnumEnemy;
 import loz.entities.Player;
+import loz.mechanics.Battle;
 import loz.mechanics.Game;
 import loz.mechanics.GameObject;
 import loz.mechanics.GameUtil;
@@ -33,7 +35,7 @@ public class Location extends GameObject {
 	 */
 	public void lookForItems(Player player) {
 		if (items == null) {
-			items = new int[3];
+			items = new int[4];
 			int[] genItems = {
 					(int) (Math.random() * locationInfo.getItemRarity() * 10),
 					(int) (Math.random() * locationInfo.getItemRarity() * 10),
@@ -67,7 +69,7 @@ public class Location extends GameObject {
 		if (items[0] != 0 && items[1] != 0 && items[2] != 0) {
 			GameUtil.println("  Nothing!");
 		}
-		GameUtil.println("Would you like to pick up all the items? ");
+		GameUtil.print("Would you like to pick up all the items? ");
 		if (Game.scan.next().toLowerCase().equals("yes")) {
 			GameUtil.println("You pickup all the items");
 			player.heal(items[0]);
@@ -81,11 +83,51 @@ public class Location extends GameObject {
 		}
 	}
 
-	public void lookForEnemies(Player player, EnumLocation location) {
+	public void lookForEnemies(Player player) {
 		if (enemies == null) {
 			enemies = new Enemy[2];
-			int[] genEnemies;
-
+			for(int i = 0; i < 2; i++){
+				Enemy tmp = null;
+				int random = (int )(Math.random() * 6 + 1);
+				switch(random){
+				case 0:
+				case 1:
+					tmp = new Enemy(EnumEnemy.KEESE);
+					break;
+				case 2:
+				case 3:
+					tmp = new Enemy(EnumEnemy.CHUCHU);
+					break;
+				case 5:
+				case 6:
+					tmp = new Enemy(EnumEnemy.OCTOROK);
+					break;
+				case 7:
+					tmp = new Enemy(EnumEnemy.BULBLIN);
+					break;
+				case 8:
+					tmp = new Enemy(EnumEnemy.BOKOBLIN);
+					break;
+				case 9:
+					tmp = new Enemy(EnumEnemy.STALFOS);
+					break;
+				default:
+					tmp = new Enemy(EnumEnemy.KEESE);
+				}
+				enemies[i] = tmp;
+			}
+		}
+		GameUtil.println("You look around and find two enemies\n   " + enemies[0].getName() + enemies[0].getHealthToString() + "\n   " + enemies[1].getName() + enemies[1].getHealthToString());
+		GameUtil.print("Would you like to fight an enemy? ");
+		if (Game.scan.next().toLowerCase().equals("yes")) {
+			GameUtil.print("Which enemy? 1 or 2?");
+			if(Game.scan.nextInt() == 1){
+				new Battle(player, enemies[0]);
+			}else{
+				new Battle(player, enemies[1]);
+			}
+		} else {
+			GameUtil.println("You decide to leave the items");
 		}
 	}
 

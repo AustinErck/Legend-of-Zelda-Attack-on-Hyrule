@@ -22,9 +22,9 @@ public class Player extends Entity {
 		this.arrows = arrows;
 		this.rupees = rupees;
 		this.regionXPos = 1;
-		this.regionYPos = 1;
-		this.xPos = 0;
-		this.yPos = 0;
+		this.regionYPos = 0;
+		this.xPos = 9;
+		this.yPos = 8;
 		this.saveID = saveID;
 		this.elements[0] = forestElement;
 		this.elements[1] = fireElement;
@@ -61,7 +61,13 @@ public class Player extends Entity {
 							+ map[getYPos() - 1][getXPos()].getName()
 									.toLowerCase() + " there.");
 				} else {
-					GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					if(regionYPos != 0){
+						GameUtil.println("You walk north.");
+						regionYPos--;
+						yPos = 9;
+					}else{
+						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					}
 				}
 			}
 			break;
@@ -76,22 +82,33 @@ public class Player extends Entity {
 							+ map[getYPos()][getXPos() + 1].getName()
 									.toLowerCase() + " there.");
 				} else {
-					GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					if(regionXPos < 3){
+						GameUtil.println("You walk east.");
+						regionXPos++;
+						xPos = 0;
+					}else{
+						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					}
 				}
 			}
 			break;
 		case 2:
-			if (getYPos() < map.length - 1
-					&& !map[getYPos() + 1][getXPos()].isAWall()) {
+			if (yPos < 9 && !map[yPos + 1][getXPos()].isAWall()) {
 				GameUtil.println("You walk south.");
 				yPos++;
 			} else {
-				if (!(yPos == map.length - 1)) {
+				if (!(yPos == 9)) {
 					GameUtil.println("You can't, there is a "
-							+ map[getYPos() + 1][getXPos()].getName()
+							+ map[yPos + 1][getXPos()].getName()
 									.toLowerCase() + " there.");
 				} else {
-					GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					if(regionYPos < 2){
+						GameUtil.println("You walk south.");
+						regionYPos++;
+						yPos = 0;
+					}else{
+						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					}
 				}
 			}
 			break;
@@ -105,7 +122,13 @@ public class Player extends Entity {
 							+ map[getYPos()][getXPos() - 1].getName()
 									.toLowerCase() + " there.");
 				} else {
-					GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					if(regionXPos != 0){
+						GameUtil.println("You walk west.");
+						regionXPos--;
+						xPos = 9;
+					}else{
+						GameUtil.println("There seems to be a rocky hill that is too \nsteep to climb. Better go somewhere else");
+					}
 				}
 			}
 			break;
@@ -190,11 +213,6 @@ public class Player extends Entity {
 	 */
 	public int getYPos() {
 		return yPos;
-	}
-
-	public void setStartPosition(int xPos, int yPos) {
-		this.xPos = xPos;
-		this.yPos = yPos;
 	}
 
 	/**

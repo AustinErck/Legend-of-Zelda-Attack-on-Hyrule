@@ -12,7 +12,11 @@ public enum EnumLocation {
 			"a dark, dense patch of trees. To close together to get through."), WALL_MOUNTAIN(
 			"mountain wall", "a nicely paved path"), WALL_LAKE("lake",
 			"a beautiful, sparkling lake"), WALL_CASTLE("castle wall",
-			"a nicely paved path");
+			"a nicely paved path"), SPECIAL_FOREST("",
+			"the forest element"), SPECIAL_MOUNTAIN("",
+					"the fire element"), SPECIAL_LAKE("",
+							"the water element"), SPECIAL_CASTLE("castle wall",
+									"the master sword");
 
 	private boolean isAWall;
 	private String name, desc;

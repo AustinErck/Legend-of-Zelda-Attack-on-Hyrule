@@ -1,7 +1,10 @@
 package loz.mechanics;
 
+import java.util.Random;
 import java.util.Scanner;
 
+import loz.entities.Enemy;
+import loz.entities.EnumEnemy;
 import loz.entities.Player;
 import loz.locations.EnumLocation;
 import loz.locations.Location;
@@ -23,7 +26,6 @@ public class Game {
 	public Game(Player player) {
 		this.player = player;
 		loadMap();
-		player.setStartPosition(1, 1);
 		while (playGame) {
 			GameUtil.print("\nEnter an action: ");
 			switch (scan.nextLine().toLowerCase()) {
@@ -43,7 +45,7 @@ public class Game {
 				map[player.getRegionYPos()][player.getRegionYPos()].getLocationInfo(player.getXPos(), player.getYPos()).lookForItems(player);
 				break;
 			case "look for enemies":
-				// TODO
+				map[player.getRegionYPos()][player.getRegionYPos()].getLocationInfo(player.getXPos(), player.getYPos()).lookForEnemies(player);
 				break;
 			case "map":
 				for(int i = 0; i < 3; i++){
@@ -73,10 +75,25 @@ public class Game {
 				playGame = false;
 				System.exit(0);
 				break;
+			case "cords":
+				GameUtil.println("Region: " + player.getRegionXPos() + ", " + player.getRegionYPos());
+				GameUtil.println("Map: " + player.getXPos() + ", " + player.getYPos());
+				break;
+			case "battle":
+				new Battle(player, new Enemy(EnumEnemy.CHUCHU));
+				break;
+			case "test":
+				for(int i = 0; i < 100; i++){
+					//I know this isn't AP regulations but I need a botto mheavy random number
+					Random random = new Random();
+					int j = (int) Math.sqrt(random.nextInt(10*10));
+					GameUtil.println("" + j);
+				}
+				break;
 			case "help":
 				GameUtil.println("\n~Available Commands~"
 						+ "\n   Go (direction): The player will walk in that direction Ex: go north"
-						+ "\n   Search for items: The player will look for nearby items"
+						+ "\n   Look for items: The player will look for nearby items"
 						+ "\n   Help: Lists commands"
 						+ "\n   Save: Saves the game"
 						+ "\n   Save and Quit: Saves then quits the game"
