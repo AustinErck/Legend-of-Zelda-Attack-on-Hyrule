@@ -117,7 +117,7 @@ public class Location extends GameObject {
 				enemies[i] = tmp;
 			}
 		}
-		GameUtil.println("You look around and find two enemies\n   " + enemies[0].getName() + enemies[0].getHealthToString() + "\n   " + enemies[1].getName() + enemies[1].getHealthToString());
+		GameUtil.println("You look around and find two enemies\n   " + enemies[0].getName() + "\n   " + enemies[1].getName());
 		GameUtil.print("Would you like to fight an enemy? ");
 		if (Game.scan.next().toLowerCase().equals("yes")) {
 			GameUtil.print("Which enemy? 1 or 2?");
